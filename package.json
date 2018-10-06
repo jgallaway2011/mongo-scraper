@@ -2,9 +2,10 @@
   "name": "mongoscraper",
   "version": "1.0.0",
   "description": "News Article Scraper using MongoDB",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -22,7 +23,7 @@
     "express": "^4.16.3",
     "express-handlebars": "^3.0.0",
     "mongoose": "^5.3.1",
-    "npm": "^6.4.1",
     "request": "^2.88.0"
-  }
+  },
+  "devDependencies": {}
 }

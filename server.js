@@ -1,8 +1,8 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-const exphbs = require("express-handlebars");
-const cheerio = require("cheerio");
-const request = require("request");
+var express = require("express");
+var bodyParser = require("body-parser");
+var exphbs = require("express-handlebars");
+var cheerio = require("cheerio");
+var request = require("request");
 
 var app = express();
 var PORT = process.env.PORT || 3000;
@@ -17,7 +17,7 @@ app.engine("handlebars", exphbs({defaultLayout: "main"}));
 app.set("view engine", "handlebars");
 
 // Routes
-require("./routes/apiRoutes")(app);
+// require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
 
 // Request will be used to scrape articles from sites
@@ -42,7 +42,7 @@ request("https://www.nytimes.com/", function(error, response, html) {
   // });
 
   // Log the results once you've looped through each of the elements found with cheerio
-  console.log(results);
+  // console.log($);
 });
 
 // Starting the server
