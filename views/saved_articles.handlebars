@@ -6,9 +6,7 @@
                 <img class="card-img-top" src={{this.image}} alt="Article Image">
                 <div class="card-body">
                     <h5 class="card-title">{{this.title}}</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's
-                        content.</p>
+                    <p class="card-text">{{this.summary}}</p>
                     <a href="{{this.link}}" target="_blank" class="btn btn-primary">Read</a>
                     <button class="btn btn-primary unsave-articles" data-id={{this._id}}>Unsave</button>
                     <button class="btn btn-primary comment-articles" data-id={{this._id}}>Comment</button>

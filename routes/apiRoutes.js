@@ -15,6 +15,7 @@ module.exports = function (app) {
 
                 result.title = $(this).find("h2").find("a").text();
                 result.link = $(this).find("h2").find("a").attr("href");
+                result.summary = $(this).find("p.summary").text();
                 result.image = $(this).find("figure").find("img").attr("src");
 
                 db.Article.create(result)
