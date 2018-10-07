@@ -9,7 +9,7 @@
                     <p class="card-text">{{this.summary}}</p>
                     <a href="{{this.link}}" target="_blank" class="btn btn-primary">Read</a>
                     <button type="button" class="btn btn-primary unsave-articles" data-id={{this._id}}>Unsave</button>
-                    <button type="button" data-toggle="modal" data-target="#commentModal" class="btn btn-primary comments-Articles" data-id={{this._id}}>Comment</button>
+                    <button type="button" data-toggle="modal" data-target="#noteModal{{this._id}}" class="btn btn-primary">Comment</button>
                 </div>
             </div>
         </div>
@@ -17,23 +17,30 @@
     </div>
 </div>
 
+{{#each dbArticle}}
 <!-- Modal -->
-<div class="modal" data-backdrop="false" id="commentModal" tabindex="-1" role="dialog" aria-labelledby="commentModal" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="commentModal">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+<div class="modal" id="noteModal{{this._id}}" tabindex="-1" role="dialog" aria-labelledby="noteModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="noteModal">Comments for: {{this._id}}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="noteFormControlTextarea">Add New Comment</label>
+                        <textarea class="form-control" id="noteFormControlTextarea" rows="2"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary save-comments">Save changes</button>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
+{{/each}}

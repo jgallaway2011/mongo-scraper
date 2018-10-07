@@ -24,5 +24,13 @@ body {
     margin: 20px auto;
     height: 525px;
   }
+
+  .card-img-top {
+    height: 200px;
+  }
+
+  .modal-backdrop {
+    opacity: 0.9;
+  }
   
   

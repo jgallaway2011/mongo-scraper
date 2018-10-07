@@ -3,7 +3,7 @@ $(document).ready(function () {
   $(document).on("click", "#scrape-articles", handleArticleScrape);
   $(document).on("click", ".btn.save-articles", handleArticleSave);
   $(document).on("click", ".btn.unsave-articles", handleArticleUnsave);
-  $(document).on("click", ".btn.comment-articles", handleArticleComment);
+  $(document).on("click", ".btn.save-notes", handleNoteSave);
   $(document).on("click", "#clear", handleArticleClear);
 
   function handleArticleScrape() {
