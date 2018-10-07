@@ -3,7 +3,8 @@
 
 <head>
   <meta charset="utf-8">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+    crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <!--responsive-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -18,11 +19,39 @@
   <!--local js-->
   <script src="/js/index.js"></script>
   <!-- Adds favicon -->
-  {{!-- <link rel="icon" href="images/favicon-waitER-logo.PNG" type="image/gif" sizes="16x16"> --}}
+  {{!--
+  <link rel="icon" href="images/favicon-waitER-logo.PNG" type="image/gif" sizes="16x16"> --}}
 </head>
 
 <body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="/">Mongo Scraper</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Saved Articles</a>
+        </li>
+        <li class="nav-item">
+          <button class="btn btn-danger" id="scrape-articles">SCRAPE NEW ARTICLES!</button>
+        </li>
+        <li class="nav-item">
+          <button class="btn btn btn-danger" type="submit">CLEAR ARTICLES!</button>
+        </li>
+      </ul>
+    </div>
+  </nav>
   {{{body}}}
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-bottom">
+    <a class="nav-link active">DISCOVER YOUR NEWS TODAY!</a>
+  </nav>
 </body>
 
 </html>
