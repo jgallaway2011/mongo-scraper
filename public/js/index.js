@@ -12,21 +12,18 @@ $(document).ready(function () {
   }
 
   function handleArticleSave() {
+    $(this).parents(".col-sm-3").remove();
     var thisId = $(this).attr("data-id");
     $.post("/api/save/" + thisId).then(function(data) {
       console.log(data);
-    }).then(function() {
-      window.location.href = "/scrapedArticles";
     })
   }
 
   function handleArticleUnsave() {
+    $(this).parents(".col-sm-3").remove();
     var thisId = $(this).attr("data-id");
     $.post("/api/unsave/" + thisId).then(function(data) {
       console.log(data);
-    }).then(function() {
-      // window.location.href = "/scrapedArticles";
-      location.reload(true);
     })
   }
 
@@ -35,5 +32,4 @@ $(document).ready(function () {
       window.location.href = "/";
     });
   }
-
 });
