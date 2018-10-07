@@ -33,7 +33,7 @@ module.exports = function (app) {
 
     // Route for chaning state of article to true for the saved boolean
     app.post("/api/save/:id", function (req, res) {
-        db.Article.findOneAndUpdate( {_id: req.params.id}, { "saved": true })
+        db.Article.findOneAndUpdate({ _id: req.params.id }, { "saved": true })
             .then(function (dbArticle) {
                 console.log(dbArticle);
             })
@@ -43,30 +43,44 @@ module.exports = function (app) {
             });
     });
 
-        // Route for chaning state of article to false for the saved boolean
-        app.post("/api/unsave/:id", function (req, res) {
-            db.Article.findOneAndUpdate( {_id: req.params.id}, { "saved": false })
-                .then(function (dbArticle) {
-                    console.log(dbArticle);
-                })
-                .catch(function (err) {
-                    // If an error occurred, send it to the client
-                    return res.json(err);
-                });
-        });
+    // Route for chaning state of article to false for the saved boolean
+    app.post("/api/unsave/:id", function (req, res) {
+        db.Article.findOneAndUpdate({ _id: req.params.id }, { "saved": false })
+            .then(function (dbArticle) {
+                console.log(dbArticle);
+            })
+            .catch(function (err) {
+                // If an error occurred, send it to the client
+                return res.json(err);
+            });
+    });
 
-    app.get("/api/clear", function(req, res) {
+
+    // Route for chaning state of article to false for the saved boolean
+    app.post("/api/comment/:id", function (req, res) {
+        db.Note.find({ _id: req.params.id })
+            .then(function (dbArticle) {
+                console.log(dbArticle);
+                res.send(dbArticle);
+            })
+            .catch(function (err) {
+                // If an error occurred, send it to the client
+                return res.json(err);
+            });
+    });
+
+    app.get("/api/clear", function (req, res) {
         db.Article.remove({})
-        .then(function () {
-            db.Note.remove({})
-        }).then(function() {
-            console.log("All Documents in Article and Note collection removed");
-            res.redirect("/");
-        })
-        .catch(function (err) {
-            // If an error occurred, send it to the client
-            return res.json(err);
-        });
+            .then(function () {
+                db.Note.remove({})
+            }).then(function () {
+                console.log("All Documents in Article and Note collection removed");
+                res.redirect("/");
+            })
+            .catch(function (err) {
+                // If an error occurred, send it to the client
+                return res.json(err);
+            });
     });
 
     // Route for getting all Articles from the db

@@ -3,10 +3,11 @@ $(document).ready(function () {
   $(document).on("click", "#scrape-articles", handleArticleScrape);
   $(document).on("click", ".btn.save-articles", handleArticleSave);
   $(document).on("click", ".btn.unsave-articles", handleArticleUnsave);
+  $(document).on("click", ".btn.comment-articles", handleArticleComment);
   $(document).on("click", "#clear", handleArticleClear);
 
   function handleArticleScrape() {
-    $.get("/api/scrape").then(function() {
+    $.get("/api/scrape").then(function () {
       window.location.href = "/scrapedArticles"
     })
   }
@@ -14,7 +15,7 @@ $(document).ready(function () {
   function handleArticleSave() {
     $(this).parents(".col-sm-6").remove();
     var thisId = $(this).attr("data-id");
-    $.post("/api/save/" + thisId).then(function(data) {
+    $.post("/api/save/" + thisId).then(function (data) {
       console.log(data);
     })
   }
@@ -22,15 +23,21 @@ $(document).ready(function () {
   function handleArticleUnsave() {
     $(this).parents(".col-sm-6").remove();
     var thisId = $(this).attr("data-id");
-    $.post("/api/unsave/" + thisId).then(function(data) {
+    $.post("/api/unsave/" + thisId).then(function (data) {
       console.log(data);
     })
   }
 
-  function handleArticleClear() {
-    $.get("api/clear").then(function() {
-      window.location.href = "/";
+  function handleArticleComment() {
+    var thisId = $(this).attr("data-id");
+    $.get("api/comment/" + thisId).then(function (data) {
+      console.log(data)
     });
   }
 
+  function handleArticleClear() {
+    $.get("api/clear").then(function () {
+      window.location.href = "/";
+    });
+  }
 });

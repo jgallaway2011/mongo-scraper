@@ -1,102 +1,28 @@
-html {
-    position: relative;
-    min-height: 100%;
+body {
+    margin-bottom: 60px;
+    background: #ffffff url("../images/background.jpg") no-repeat;
+    background-size: cover;
   }
 
-  body {
-    margin-bottom: 60px;
-  }
-  
   .navbar {
-    margin-bottom: 0;
-    color: white;
+    color: #ffffff;
   }
-  
-  .jumbotron {
-    position: relative;
-    width: 100%;
-    height: 500px;
-    padding: 0;
-    font-family: "Cormorant SC";
-    box-shadow: 10px 5px 20px 2px lightslategrey;
-  }
-  
-  .jumbotron .overlay {
-    position: absolute;
+
+  /* .overlay {
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
     background: linear-gradient(#333, black);
+    backbackground-size: cover;
     opacity: 0.7;
-  }
-  
-  .jumbotron .background-image {
-    height: 100%;
-    background-image: url("../images/background.jpg");
-    background-size: cover;
-  }
-  
-  .jumbotron .caption {
-    position: absolute;
-    top: 30%;
-    width: 100%;
-    text-align: center;
-  }
-  
-  .jumbotron .caption h1,
-  .jumbotron .caption p {
-    color: white;
-  }
-  
-  .jumbotron h1 {
-    font-size: 80px;
-    font-weight: 800;
-  }
-  
-  .jumbotron p {
-    font-size: 30px;
-  }
+  } */
 
-  .card {
+.card {
     border-radius: 0;
     box-shadow: 3px 3px 20px lightslategrey;
     margin: 20px auto;
     height: 525px;
   }
   
-  .card .card-header {
-    background-color: #2196f3;
-    position: relative;
-    padding-top: 30px;
-    padding-bottom: 30px;
-  }
   
-  .card .card-header h3 {
-    color: white;
-  }
-  
-  .card .card-header .btn {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-  }
-  
-  .card .card-header .btn.delete {
-    right: 160px;
-  }
-  
-  .card .card-body {
-    font-size: 16px;
-  }
-  
-  .card .card-header .article-link {
-    color: white;
-    display: inline-block;
-    width: 80%;
-  }
-
-  .modal-backdrop {
-    /* bug fix - no overlay */    
-    display: none;    
-}
