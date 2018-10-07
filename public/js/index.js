@@ -12,7 +12,6 @@ $(document).ready(function () {
   }
 
   function handleArticleSave() {
-    console.log("Made it this far");
     var thisId = $(this).attr("data-id");
     $.put("/api/save/" + thisId).then(function(data) {
       console.log(data);
