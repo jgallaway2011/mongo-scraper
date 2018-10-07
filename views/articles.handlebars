@@ -1,14 +1,14 @@
 <div class="container-fluid">
-    <div class="row">
+    <div class="row justify-content-center">
         {{#each dbArticle}}
-        <div class="col-sm-3">
+        <div class="col-sm-6 col-md-4 col-lg-3">
             <div class="card" style="width: 18rem;">
                 <img class="card-img-top" src={{this.image}} alt="Article Image">
                 <div class="card-body">
                     <h5 class="card-title">{{this.title}}</h5>
                     <p class="card-text">{{this.summary}}</p>
                     <a href="{{this.link}}" target="_blank" class="btn btn-primary">Read</a>
-                    <button class="btn btn-primary save-articles" data-id={{this._id}}>Save</button>
+                    <button type="button" class="btn btn-primary save-articles" data-id={{this._id}}>Save</button>
                 </div>
             </div>
         </div>
