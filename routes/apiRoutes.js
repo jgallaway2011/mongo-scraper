@@ -33,7 +33,7 @@ module.exports = function (app) {
 
     // Route for chaning state of article to true for the saved boolean
     app.post("/api/save/:id", function (req, res) {
-        db.Article.findByIdAndUpdate( {_id: req.params.id}, { "saved": true })
+        db.Article.findOneAndUpdate( {_id: req.params.id}, { "saved": true })
             .then(function (dbArticle) {
                 console.log(dbArticle);
             })
@@ -45,7 +45,7 @@ module.exports = function (app) {
 
         // Route for chaning state of article to false for the saved boolean
         app.post("/api/unsave/:id", function (req, res) {
-            db.Article.findByIdAndUpdate( {_id: req.params.id}, { "saved": false })
+            db.Article.findOneAndUpdate( {_id: req.params.id}, { "saved": false })
                 .then(function (dbArticle) {
                     console.log(dbArticle);
                 })
@@ -61,6 +61,7 @@ module.exports = function (app) {
             db.Note.remove({})
         }).then(function() {
             console.log("All Documents in Article and Note collection removed");
+            res.redirect("/");
         })
         .catch(function (err) {
             // If an error occurred, send it to the client

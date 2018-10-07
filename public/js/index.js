@@ -12,7 +12,7 @@ $(document).ready(function () {
   }
 
   function handleArticleSave() {
-    $(this).parents(".col-md-6").remove();
+    $(this).parents(".col-sm-6").remove();
     var thisId = $(this).attr("data-id");
     $.post("/api/save/" + thisId).then(function(data) {
       console.log(data);
@@ -20,7 +20,7 @@ $(document).ready(function () {
   }
 
   function handleArticleUnsave() {
-    $(this).parents(".col-md-6").remove();
+    $(this).parents(".col-sm-6").remove();
     var thisId = $(this).attr("data-id");
     $.post("/api/unsave/" + thisId).then(function(data) {
       console.log(data);
