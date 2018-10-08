@@ -9,7 +9,8 @@
                     <p class="card-text">{{this.summary}}</p>
                     <a href="{{this.link}}" target="_blank" class="btn btn-primary">Read</a>
                     <button type="button" class="btn btn-primary unsave-articles" data-id={{this._id}}>Unsave</button>
-                    <button type="button" data-toggle="modal" data-target="#noteModal{{this._id}}" class="btn btn-primary">Note</button>
+                    <button type="button" data-toggle="modal" data-target="#noteModal{{this._id}}" data-id={{this._id}}
+                        class="btn btn-primary note-articles">Note</button>
                 </div>
             </div>
         </div>
@@ -29,6 +30,8 @@
                 </button>
             </div>
             <div class="modal-body">
+                <ul id="note-ul">
+                </ul>
                 <form>
                     <div class="form-group">
                         <label for="noteFormControlTextarea">Add New Note</label>
@@ -37,7 +40,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary save-notes" id="popover" data-id={{this._id}} data-container="body" data-placement="left" data-trigger="focus" data-content="Please add a note!">Save changes</button>
+                <button type="button" class="btn btn-primary note-save" data-id={{this._id}}>Save changes</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
         </div>

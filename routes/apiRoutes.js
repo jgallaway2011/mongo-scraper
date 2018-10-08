@@ -55,6 +55,18 @@ module.exports = function (app) {
             });
     });
 
+    // Route for getting all notes related to an article
+    app.get("/api/notes/:id", function (req, res) {
+        db.Note.find({ article: req.params.id })
+            .then(function (dbArticle) {
+                console.log(dbArticle);
+                return res.json(dbArticle);
+            })
+            .catch(function (err) {
+                // If an error occurred, send it to the client
+                return res.json(err);
+            });
+    });
 
     // Route for saving notes for articles
     app.post("/api/note/save/:id", function (req, res) {
