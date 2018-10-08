@@ -3,7 +3,7 @@ App to scrap articles and then store them in Mongo DB along with comments the us
 
 To-dos:
 
-1) Add validation to prevent duplicat articles
+1) Add validation to prevent duplicate articles
 
 Nice To-Haves:
 1) Put card buttons at equal placing

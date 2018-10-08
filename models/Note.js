@@ -10,6 +10,10 @@ var NoteSchema = new Schema({
   article: {
     type: Schema.Types.ObjectId,
     ref: "Article"
+  },
+  saved: {
+    type: Boolean,
+    default: true
   }
 });
 

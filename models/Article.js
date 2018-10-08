@@ -37,16 +37,6 @@ var ArticleSchema = new Schema({
   }]
 });
 
-// ArticleSchema.path('link').validate(function(value, done) {
-//   this.model('Article').count({ link: value }, function(err, count) {
-//       if (err) {
-//           return done(err);
-//       } 
-//       // If `count` is greater than zero, "invalidate"
-//       done(!count);
-//   });
-// }, 'Link already exists');
-
 // This creates our model from the above schema, using mongoose's model method
 var Article = mongoose.model("Article", ArticleSchema);
 

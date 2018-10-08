@@ -47,11 +47,17 @@ module.exports = function (app) {
     app.post("/api/unsave/:id", function (req, res) {
         db.Article.findOneAndUpdate({ _id: req.params.id }, { "saved": false })
             .then(function (dbArticle) {
-                console.log(dbArticle);
+                console.log("This is dbArticle after clicking unsave:", dbArticle);
+                return db.Note.updateMany({ article : dbArticle._id }, { "saved": false });
+            })
+            .then(function (dbNote) {
+                // If we were able to successfully update an Article, send it back to the client
+                console.log("This is dbArticle: ", dbNote);
+                res.json(dbNote);
             })
             .catch(function (err) {
                 // If an error occurred, send it to the client
-                return res.json(err);
+                res.json(err);
             });
     });
 
@@ -92,25 +98,25 @@ module.exports = function (app) {
 
     // Route for saving notes for articles
     app.post("/api/note/delete/:id", function (req, res) {
-        db.Note.findOneAndRemove({ _id: req.params.id})
-        .then(function (dbNote) {
-            console.log("This note was deleted: ", dbNote);
-            return db.Article.findOneAndUpdate({ _id : dbNote.article }, { $pull: { note: dbNote._id } });
-        })
-        .then(function (dbArticle) {
-            // If we were able to successfully update an Article, send it back to the client
-            console.log("This is dbArticle: ", dbArticle);
-            res.json(dbArticle);
-        })
-        .catch(function (err) {
-            // If an error occurred, send it to the client
-            res.json(err);
-        });
-});
+        db.Note.findOneAndRemove({ _id: req.params.id })
+            .then(function (dbNote) {
+                console.log("This note was deleted: ", dbNote);
+                return db.Article.findOneAndUpdate({ _id: dbNote.article }, { $pull: { note: dbNote._id } });
+            })
+            .then(function (dbArticle) {
+                // If we were able to successfully update an Article, send it back to the client
+                console.log("This is dbArticle: ", dbArticle);
+                res.json(dbArticle);
+            })
+            .catch(function (err) {
+                // If an error occurred, send it to the client
+                res.json(err);
+            });
+    });
 
     // Route to clear all docuemnts in Article collection in Articles database
     app.get("/api/clear", function (req, res) {
-        db.Article.remove({})
+        db.Article.remove({"saved" : false})
             .then(function () {
                 res.redirect("/api/clear/notes");
             })
@@ -122,7 +128,7 @@ module.exports = function (app) {
 
     // Route hit to clear all documents in Note collection after clearing out Article Collection
     app.get("/api/clear/notes", function (req, res) {
-        db.Note.remove({})
+        db.Note.remove({"saved" : false})
             .then(function () {
                 res.redirect("/");
             })
@@ -133,9 +139,10 @@ module.exports = function (app) {
     });
 
     // Route for getting all Articles from the db
-    app.get("/api/articles", function (req, res) {
+    app.get("/api/articles/all", function (req, res) {
         // Grab every document in the Articles collection
         db.Article.find({})
+            .populate("note")
             .then(function (dbArticle) {
                 // If we were able to successfully find Articles, send them back to the client
                 res.json(dbArticle);
@@ -150,6 +157,7 @@ module.exports = function (app) {
     app.get("/api/articles/saved", function (req, res) {
         // Grab every document in the Articles collection
         db.Article.find({ "saved": true })
+            .populate("note")
             .then(function (dbArticle) {
                 // If we were able to successfully find Articles, send them back to the client
                 res.json(dbArticle);
@@ -164,6 +172,7 @@ module.exports = function (app) {
     app.get("/api/articles/unsaved", function (req, res) {
         // Grab every document in the Articles collection
         db.Article.find({ "saved": false })
+            .populate("note")
             .then(function (dbArticle) {
                 // If we were able to successfully find Articles, send them back to the client
                 res.json(dbArticle);
