@@ -54,7 +54,7 @@ $(document).ready(function () {
 
   function handleNoteSave() {
     var thisId = $(this).attr("data-id");
-    var body = $("#noteFormControlTextarea").val().trim();
+    var body = $("#noteFormControlTextarea" + thisId).val().trim();
     if (body === "") {
       // Put in a popover or validation messege in the future
     } else {

@@ -36,5 +36,3 @@ app.listen(PORT, function () {
   );
 });
 
-// Exporting app
-module.exports = app;
