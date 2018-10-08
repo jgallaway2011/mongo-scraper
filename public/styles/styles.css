@@ -9,16 +9,6 @@ body {
     color: #ffffff;
   }
 
-  /* .overlay {
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: linear-gradient(#333, black);
-    backbackground-size: cover;
-    opacity: 0.7;
-  } */
-
 .card {
     border-radius: 0;
     box-shadow: 3px 3px 20px lightslategrey;

@@ -43,17 +43,18 @@ module.exports = function (app) {
             });
     });
 
-    // Route for chaning state of article to false for the saved boolean
+    // Route for chaning state of article and associated notes to false for the saved boolean
     app.post("/api/unsave/:id", function (req, res) {
         db.Article.findOneAndUpdate({ _id: req.params.id }, { "saved": false })
             .then(function (dbArticle) {
                 console.log("This is dbArticle after clicking unsave:", dbArticle);
                 return db.Note.updateMany({ article : dbArticle._id }, { "saved": false });
             })
-            .then(function (dbNote) {
-                // If we were able to successfully update an Article, send it back to the client
-                console.log("This is dbArticle: ", dbNote);
-                res.json(dbNote);
+            .then(function () {
+                // If we were able to successfully update a Note, send it back to the client
+                return db.Article.find({"saved" : true})
+            }).then(function (dbArticle) {
+                res.render("saved_articles", {dbArticle});
             })
             .catch(function (err) {
                 // If an error occurred, send it to the client

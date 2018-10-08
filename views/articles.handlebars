@@ -1,3 +1,4 @@
+{{#if dbArticle}}
 <div class="container-fluid">
     <div class="row justify-content-center">
         {{#each dbArticle}}
@@ -15,3 +16,17 @@
         {{/each}}
     </div>
 </div>
+{{else}}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="alert alert-warning text-center">
+            <h4>Uh Oh. Looks like we don't have any scraped articles.</h4>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <h4>
+            <button class="btn btn-danger" id="scrape-articles">SCRAPE NEW ARTICLES!</button>
+        </h4>
+    </div>
+</div>
+{{/if}}
