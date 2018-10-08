@@ -36,18 +36,18 @@ $(document).ready(function () {
   }
 
   function handleGetNotes(thisId) {
+    $("#note-ul-" + thisId).empty();
     $.get("/api/notes/" + thisId).then(function (data) {
       console.log("This is the console for handleNoteDisplay:", data);
-      $("#note-ul").empty();
       for (i = 0; i < data.length; i++) {
         var note = data[i].body;
-        var id = data[i].article;
-        console.log(note);
+        var id = data[i]._id;
+        console.log("This is the note:", note);
         // Stores button in memory
-        var noteLI = $("<li data-id=" + id + ">" + note + "<button class='btn btn-danger note-delete'>x</button></li><hr>");
+        var noteLI = $("<li id=" + id + ">" + note + "<button class='btn btn-danger note-delete' data-id=" + id + ">x</button></li><hr>");
 
         // Append the li to the ul
-        $("#note-ul").append(noteLI);
+        $("#note-ul-" + data[i].article).append(noteLI);
       }
     });
   }
@@ -60,14 +60,19 @@ $(document).ready(function () {
     } else {
       $.post("api/note/save/" + thisId, { body: body }).then(function (data) {
         console.log("This happens after our promise for saving note: ", data)
+        $("#noteFormControlTextarea").val("");
+        handleGetNotes(data._id);
       });
     }
   }
 
   function handleNoteDelete() {
     var thisId = $(this).attr("data-id");
+    $(this).parents("#" + thisId).remove();
+    $("#" + thisId + "hr").remove();
+    console.log(thisId);
     $.post("api/note/delete/" + thisId).then(function (data) {
-      console.log("This happens after our promise for deleting note: ", data)
+      console.log("This document was deleted from the Note collection: ", data)
     });
   }
 
