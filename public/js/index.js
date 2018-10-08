@@ -68,11 +68,10 @@ $(document).ready(function () {
 
   function handleNoteDelete() {
     var thisId = $(this).attr("data-id");
-    $(this).parents("#" + thisId).remove();
-    $("#" + thisId + "hr").remove();
     console.log(thisId);
     $.post("api/note/delete/" + thisId).then(function (data) {
       console.log("This document was deleted from the Note collection: ", data)
+      handleGetNotes(data._id);
     });
   }
 

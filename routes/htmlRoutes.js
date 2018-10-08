@@ -21,6 +21,7 @@ module.exports = function (app) {
 
   app.get("/savedArticles", function (req, res, next) {
     db.Article.find({"saved": true})
+    // .populate("notes")
     .then(function (dbArticle) {
         // If we were able to successfully find Articles, send them back to the client
         console.log(dbArticle);

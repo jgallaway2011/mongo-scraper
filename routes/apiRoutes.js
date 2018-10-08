@@ -92,18 +92,21 @@ module.exports = function (app) {
 
     // Route for saving notes for articles
     app.post("/api/note/delete/:id", function (req, res) {
-        console.log(req.params.id);
-        db.Note.findOneAndDelete({ _id: req.params.id})
-            .then(function (dbNote) {
-                // If we were able to successfully update an Article, send it back to the client
-                console.log("This is dbArticle: ", dbNote);
-                res.json(dbNote);
-            })
-            .catch(function (err) {
-                // If an error occurred, send it to the client
-                res.json(err);
-            });
-    });
+        db.Note.findOneAndRemove({ _id: req.params.id})
+        .then(function (dbNote) {
+            console.log("This note was deleted: ", dbNote);
+            return db.Article.findOneAndRemove({ note: dbNote._id });
+        })
+        .then(function (dbArticle) {
+            // If we were able to successfully update an Article, send it back to the client
+            console.log("This is dbArticle: ", dbArticle);
+            res.json(dbArticle);
+        })
+        .catch(function (err) {
+            // If an error occurred, send it to the client
+            res.json(err);
+        });
+});
 
     // Route to clear all docuemnts in Article collection in Articles database
     app.get("/api/clear", function (req, res) {
