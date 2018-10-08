@@ -1,3 +1,5 @@
+![Logo](public/images/mongoscraperlogo.PNG?raw=true "Title")
+
 # Welcome to Mongo Scraper!
 
 Mongo Scraper is an app to scrap articles and then store them in Mongo DB along with comments the users might add about them Enjoy!
