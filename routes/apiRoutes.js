@@ -56,12 +56,36 @@ module.exports = function (app) {
     });
 
 
-    // Route for chaning state of article to false for the saved boolean
-    app.post("/api/comment/:id", function (req, res) {
-        db.Note.find({ _id: req.params.id })
+    // Route for saving notes for articles
+    app.post("/api/note/save/:id", function (req, res) {
+        console.log("This is req.body: ", req.body);
+        db.Note.create({
+            body: req.body.body,
+            article: req.params.id
+            })
+            .then(function (dbNote) {
+                console.log("This is db Note: ", dbNote);
+                // If a Note was created successfully, find one Article with an `_id` equal to `req.params.id`. Update the Article to be associated with the new Note
+                // { new: true } tells the query that we want it to return the updated User -- it returns the original by default
+                // Since our mongoose query returns a promise, we can chain another `.then` which receives the result of the query
+                return db.Article.findOneAndUpdate({ _id: req.params.id }, {$push: { note: dbNote._id }});
+            })
             .then(function (dbArticle) {
-                console.log(dbArticle);
-                res.send(dbArticle);
+                // If we were able to successfully update an Article, send it back to the client
+                console.log("This is dbArticle: ",dbArticle);
+                res.json(dbArticle);
+            })
+            .catch(function (err) {
+                // If an error occurred, send it to the client
+                res.json(err);
+            });
+    });
+
+    // Route to clear all docuemnts in Article collection in Articles database
+    app.get("/api/clear", function (req, res) {
+        db.Article.remove({})
+            .then(function () {
+                res.redirect("/api/clear/notes");
             })
             .catch(function (err) {
                 // If an error occurred, send it to the client
@@ -69,12 +93,10 @@ module.exports = function (app) {
             });
     });
 
-    app.get("/api/clear", function (req, res) {
-        db.Article.remove({})
+    // Route hit to clear all documents in Note collection after clearing out Article Collection
+    app.get("/api/clear/notes", function (req, res) {
+        db.Note.remove({})
             .then(function () {
-                db.Note.remove({})
-            }).then(function () {
-                console.log("All Documents in Article and Note collection removed");
                 res.redirect("/");
             })
             .catch(function (err) {

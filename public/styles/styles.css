@@ -1,4 +1,5 @@
 body {
+    margin-top: 60px;
     margin-bottom: 60px;
     background: #ffffff url("../images/background.jpg") no-repeat;
     background-size: cover;
@@ -22,7 +23,7 @@ body {
     border-radius: 0;
     box-shadow: 3px 3px 20px lightslategrey;
     margin: 20px auto;
-    height: 525px;
+    height: 550px;
   }
 
   .card-img-top {

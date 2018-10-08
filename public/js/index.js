@@ -28,11 +28,16 @@ $(document).ready(function () {
     })
   }
 
-  function handleArticleComment() {
+  function handleNoteSave() {
     var thisId = $(this).attr("data-id");
-    $.get("api/comment/" + thisId).then(function (data) {
-      console.log(data)
-    });
+    var body = $("#noteFormControlTextarea").val().trim();
+    if(body === "") {
+      // Put in a popover or validation messege in the future
+    } else {
+      $.post("api/note/save/" + thisId, { body: body }).then(function (data) {
+        console.log("This happens after our promise for saving note: ", data)
+      });
+    }
   }
 
   function handleArticleClear() {
