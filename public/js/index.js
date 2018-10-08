@@ -60,7 +60,7 @@ $(document).ready(function () {
     } else {
       $.post("api/note/save/" + thisId, { body: body }).then(function (data) {
         console.log("This happens after our promise for saving note: ", data)
-        $("#noteFormControlTextarea").val("");
+        $("#noteFormControlTextarea" + data._id).val("");
         handleGetNotes(data._id);
       });
     }

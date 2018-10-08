@@ -95,7 +95,7 @@ module.exports = function (app) {
         db.Note.findOneAndRemove({ _id: req.params.id})
         .then(function (dbNote) {
             console.log("This note was deleted: ", dbNote);
-            return db.Article.findOneAndRemove({ note: dbNote._id });
+            return db.Article.findOneAndUpdate({ _id : dbNote.article }, { $pull: { note: dbNote._id } });
         })
         .then(function (dbArticle) {
             // If we were able to successfully update an Article, send it back to the client
