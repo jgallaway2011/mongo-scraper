@@ -8,10 +8,10 @@
                 <div class="card-body">
                     <h5 class="card-title">{{this.title}}</h5>
                     <p class="card-text">{{this.summary}}</p>
-                    <a href="{{this.link}}" target="_blank" class="btn btn-primary">Read</a>
-                    <button type="button" class="btn btn-primary unsave-articles" data-id={{this._id}}>Unsave</button>
+                    <a href="{{this.link}}" target="_blank" class="btn btn-primary">READ</a>
+                    <button type="button" class="btn btn-primary unsave-articles" data-id={{this._id}}>UNSAVE</button>
                     <button type="button" data-toggle="modal" data-target="#noteModal{{this._id}}" data-id={{this._id}}
-                        class="btn btn-primary note-articles">Note</button>
+                        class="btn btn-primary note-articles">NOTE</button>
                 </div>
             </div>
         </div>
@@ -19,7 +19,7 @@
     </div>
 </div>
 {{else}}
-<div class="container">
+<div class="container container-alert">
     <div class="row justify-content-center">
         <div class="alert alert-warning text-center">
             <h4>Uh Oh. Looks like we don't have any saved articles.</h4>
@@ -38,15 +38,13 @@
 <div class="modal" id="noteModal{{this._id}}" tabindex="-1" role="dialog" aria-labelledby="noteModal" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
+            <div id="alert-{{this.id}}"></div>
             <div class="modal-header">
                 <h5 class="modal-title" id="noteModal">Notes for: {{this.title}}</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
             </div>
             <div class="modal-body">
-                <ul id="note-ul-{{this.id}}">
-                </ul>
+                <div id="note-div-{{this.id}}">
+                </div>
                 <form>
                     <div class="form-group">
                         <label for="noteFormControlTextarea">Add New Note</label>
@@ -55,8 +53,8 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary note-save" data-id={{this._id}}>Save changes</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary note-save" data-id={{this._id}}>SAVE</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">CLOSE</button>
             </div>
         </div>
     </div>

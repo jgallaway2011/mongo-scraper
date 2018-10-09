@@ -36,7 +36,7 @@ $(document).ready(function () {
   }
 
   function handleGetNotes(thisId) {
-    $("#note-ul-" + thisId).empty();
+    $("#note-div-" + thisId).empty();
     $.get("/api/notes/" + thisId).then(function (data) {
       console.log("This is the console for handleNoteDisplay:", data);
       for (i = 0; i < data.length; i++) {
@@ -46,8 +46,8 @@ $(document).ready(function () {
         // Stores button in memory
         var noteLI = $("<li id=" + id + ">" + note + "<button class='btn btn-danger note-delete' data-id=" + id + ">x</button></li><hr>");
 
-        // Append the li to the ul
-        $("#note-ul-" + data[i].article).append(noteLI);
+        // Append the li to the div
+        $("#note-div-" + data[i].article).append(noteLI);
       }
     });
   }
@@ -56,7 +56,13 @@ $(document).ready(function () {
     var thisId = $(this).attr("data-id");
     var body = $("#noteFormControlTextarea" + thisId).val().trim();
     if (body === "") {
-      // Put in a popover or validation messege in the future
+      $("#alert-" + thisId).prepend(
+      "<div class='alert alert-danger alert-dismissible fade show' role='alert'>"
+      + "<button type='button' class='close' data-dismiss='alert' aria-label='Close'>"
+      + "<span aria-hidden='true'>&times;</span>"
+      + "</button>"
+      + "<strong>ADD A NOTE BEFORE HITTING SAVE!</strong>"
+      + "</div>");
     } else {
       $.post("api/note/save/" + thisId, { body: body }).then(function (data) {
         console.log("This happens after our promise for saving note: ", data)

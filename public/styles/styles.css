@@ -5,8 +5,34 @@ body {
     background-size: cover;
   }
 
+  .logo {
+    margin-top: 100px;
+  }
+
+  .logo-span {
+    background: grey
+  }
+
+  li {
+    list-style: none;
+  }
+
+  .modal-body .btn {
+    float: right;
+    padding: 2px 10px;
+}
+
   .navbar {
     color: #ffffff;
+  }
+
+  .container-alert {
+    margin-top: 200px;
+  }
+
+  .navbar-nav > li{
+    padding-left:5px;
+    padding-right:5px;
   }
 
 .card {
@@ -24,4 +50,13 @@ body {
     opacity: 0.9;
   }
   
+  @media only screen and (max-width: 450px) {
+    body {
+      background: #ffffff url("../images/background-mobile.JPG") no-repeat;
+    }
+
+    .fixed-bottom {
+      text-align: center;
+    }
+}
   

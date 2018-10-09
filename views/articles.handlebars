@@ -8,8 +8,8 @@
                 <div class="card-body">
                     <h5 class="card-title">{{this.title}}</h5>
                     <p class="card-text">{{this.summary}}</p>
-                    <a href="{{this.link}}" target="_blank" class="btn btn-primary">Read</a>
-                    <button type="button" class="btn btn-primary save-articles" data-id={{this._id}}>Save</button>
+                    <a href="{{this.link}}" target="_blank" class="btn btn-primary">READ</a>
+                    <button type="button" class="btn btn-primary save-articles" data-id={{this._id}}>SAVE</button>
                 </div>
             </div>
         </div>
@@ -17,7 +17,7 @@
     </div>
 </div>
 {{else}}
-<div class="container">
+<div class="container container-alert">
     <div class="row justify-content-center">
         <div class="alert alert-warning text-center">
             <h4>Uh Oh. Looks like we don't have any scraped articles.</h4>
