@@ -13,10 +13,10 @@ var ArticleSchema = new Schema({
     unique: true
   },
   // `link` is required and of type String
-  // link: {
-  //   type: String,
-  //   required: true,
-  //   unique: true,
+  link: {
+    type: String,
+    required: true,
+    unique: true,
   //   validate: {
   //     isAsync: true,
   //     validator: function (value, isValid) {
@@ -26,7 +26,7 @@ var ArticleSchema = new Schema({
   //       }
   //     }
   //   }
-  //   },
+    },
     summary: {
       type: String,
       required: true
