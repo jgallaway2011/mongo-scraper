@@ -13,37 +13,40 @@ var ArticleSchema = new Schema({
     unique: true
   },
   // `link` is required and of type String
-  link: {
-    type: String,
-    required: true,
-    unique:true,
-    validate: [
-      function(input) {
-        return input.length >= 6;
-      },
-      "Password should be longer."
-    ]
-  },
-  summary: {
-    type: String,
-    required: true
-  },
-  image: {
-    type: String,
-    required: true
-  },
-  saved: {
-    type: Boolean,
-    default: false
-  },
-  // `note` is an object that stores a Note id
-  // The ref property links the ObjectId to the Note model
-  // This allows us to populate the Article with an associated Note
-  note: [{
-    type: Schema.Types.ObjectId,
-    ref: "Note"
-  }]
-});
+  // link: {
+  //   type: String,
+  //   required: true,
+  //   unique: true,
+  //   validate: {
+  //     isAsync: true,
+  //     validator: function (value, isValid) {
+  //       console.log(value);
+  //       if(self.Article.count({ link: value}) > 0) {
+  //         isValid();
+  //       }
+  //     }
+  //   }
+  //   },
+    summary: {
+      type: String,
+      required: true
+    },
+    image: {
+      type: String,
+      required: true
+    },
+    saved: {
+      type: Boolean,
+      default: false
+    },
+    // `note` is an object that stores a Note id
+    // The ref property links the ObjectId to the Note model
+    // This allows us to populate the Article with an associated Note
+    note: [{
+      type: Schema.Types.ObjectId,
+      ref: "Note"
+    }]
+  });
 
 // This creates our model from the above schema, using mongoose's model method
 var Article = mongoose.model("Article", ArticleSchema);

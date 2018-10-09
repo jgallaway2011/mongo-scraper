@@ -22,5 +22,4 @@ To-dos:
 
 Nice To-Haves:
 * Put card buttons at equal placing
-* Add more styling for sharpness
 * Scrape multiple sites or give user option of sites to scrape.

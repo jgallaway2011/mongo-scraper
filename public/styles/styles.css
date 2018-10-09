@@ -31,8 +31,7 @@ body {
   }
 
   .navbar-nav > li{
-    padding-left:5px;
-    padding-right:5px;
+    padding: 0px 5px;
   }
 
 .card {
@@ -55,8 +54,9 @@ body {
       background: #ffffff url("../images/background-mobile.JPG") no-repeat;
     }
 
-    .fixed-bottom {
-      text-align: center;
+    .navbar-nav > li{
+      padding: 5px 0px;
     }
+  
 }
   
