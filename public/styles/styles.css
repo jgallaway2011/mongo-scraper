@@ -38,11 +38,15 @@ body {
     border-radius: 0;
     box-shadow: 3px 3px 20px lightslategrey;
     margin: 20px auto;
-    height: 550px;
+    height: 500px;
   }
 
   .card-img-top {
     height: 200px;
+  }
+
+  .card-text {
+    font-size: 12px;
   }
 
   .modal-backdrop {
