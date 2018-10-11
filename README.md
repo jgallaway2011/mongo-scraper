@@ -15,11 +15,6 @@ Mongo Scraper is an app to scrap articles and then store them in Mongo DB along 
 * Josh Gallaway (https://github.com/jgallaway2011)
 
 ## Future Development Work
-
-To-dos:
 * Add validation to prevent duplicate articles
 * Modify DOM once there are no longer any articles to save or there are not articles to unsave.
-
-Nice To-Haves:
-* Put card buttons at equal placing
 * Scrape multiple sites or give user option of sites to scrape.
