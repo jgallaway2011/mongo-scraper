@@ -52,14 +52,17 @@ body {
   .modal-backdrop {
     opacity: 0.9;
   }
+
+
+  @media only screen and (max-width: 1000px) {
+    .navbar-nav > li{
+      padding: 5px 0px;
+    }
+}
   
   @media only screen and (max-width: 450px) {
     body {
       background: #ffffff url("../images/background-mobile.JPG") no-repeat;
-    }
-
-    .navbar-nav > li{
-      padding: 5px 0px;
     }
 }
   
