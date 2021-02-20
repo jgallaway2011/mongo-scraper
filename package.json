@@ -1,7 +1,7 @@
 {
   "name": "mongoscraper",
   "version": "1.0.0",
-  "description": "![Logo](public/images/mongoscraperlogo.PNG?raw=true \"Title\")",
+  "description": "News Article Scraper using MongoDB",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -12,7 +12,7 @@
     "url": "git+https://github.com/jgallaway2011/mongoscraper.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Joshua Gallaway",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/jgallaway2011/mongoscraper/issues"
