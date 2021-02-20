@@ -9,13 +9,13 @@ module.exports = function (app) {
             // Then, we load that into cheerio and save it to $ for a shorthand selector
             var $ = cheerio.load(response.data);
 
-            $("article").each(function (i, element) {
+            $("div.css-1l4spti").each(function (i, element) {
 
                 var result = {};
 
-                result.title = $(this).find("h2").find("a").text();
-                result.link = $(this).find("h2").find("a").attr("href");
-                result.summary = $(this).find("p.summary").text();
+                result.title = $(this).find("h2").text();
+                result.link = $(this).find("a").attr("href");
+                result.summary = $(this).find("p.css-1echdzn").text();
                 result.image = $(this).find("figure").find("img").attr("src");
 
                 db.Article.create(result)
